@@ -1,16 +1,12 @@
 /* ===== BASE: esqueleto común a las 6 pantallas ===== */
 body {
   display: grid;
-  grid-template-rows: auto 1fr auto; /* navbar | contenido | footer */
+  grid-template-rows: auto auto 1fr auto; /* header | navbar | contenido | footer */
   min-height: 100vh;
 }
 
 main {
   padding: 2rem 1rem;
-}
-
-#navbar {
-  align-self: flex-start;
 }
 
 /* ===== 1. BIENVENIDA (index.html) ===== */

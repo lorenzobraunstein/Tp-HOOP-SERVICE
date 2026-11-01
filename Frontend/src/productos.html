@@ -19,17 +19,30 @@
     <link rel="stylesheet" href="../css/styles.css" />
   </head>
   <body>
-    <header>HOOP SERVICE</header>
+    <header>
+      <img
+        src="../img/logo.jpg"
+        alt="Logo de HOOP Service"
+        width="50"
+        height="50"
+      />
+      HOOP SERVICE
+    </header>
     <nav id="navbar" class="nav bg-primary navbar-dark">
-      <a class="nav-link text-white active" href="./productos.html"
-        >Productos</a
-      >
+      <a class="nav-link text-white" href="./productos.html">Productos</a>
+      <a class="nav-link text-white active" href="./carrito.html">Carrito</a>
       <a class="nav-link text-white" href="./ticket.html">Ticket</a>
-      <a class="nav-link text-white" href="./carrito.html">Carrito</a>
     </nav>
 
     <main class="container my-4">
-      <p></p>
+      <section class="productos"></section>
+      <div>
+        <p class="productos__saludo" id="saludo"></p>
+        <div class="productos__categorias">
+          <div>Zapatillas</div>
+          <div>Camisetas</div>
+        </div>
+      </div>
     </main>
 
     <footer>Lorenzo Braunstein & Adrián López Da Silva</footer>

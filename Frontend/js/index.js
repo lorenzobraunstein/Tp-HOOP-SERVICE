@@ -6,4 +6,3 @@ form.addEventListener("submit", (e) => {
   sessionStorage.setItem("nombreCliente", input.value);
   window.location.href = "productos.html";
 });
- 
