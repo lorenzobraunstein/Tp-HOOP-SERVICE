@@ -1,0 +1,10 @@
+
+Zapatillas y Camisetas de básquet
+Zapatillas: marca, modelo, talle, color, jugador asociado.
+Camisetas: equipo, jugador, talle (S/M/L/XL), temporada.
+
+Stack front:
+HTML, CSS, JS y Bootstrap
+
+Stack back:
+ORM: Sequelize BD: MySQL y MySQL Workbench
