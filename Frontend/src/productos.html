@@ -28,21 +28,27 @@
       />
       HOOP SERVICE
     </header>
-    <nav id="navbar" class="nav bg-primary navbar-dark">
-      <a class="nav-link text-white" href="./productos.html">Productos</a>
-      <a class="nav-link text-white active" href="./carrito.html">Carrito</a>
+    <nav id="navbar" class="nav bg-primary">
+      <a class="nav-link text-white active" href="./productos.html"
+        >Productos</a
+      >
+      <a class="nav-link text-white" href="./carrito.html">Carrito</a>
       <a class="nav-link text-white" href="./ticket.html">Ticket</a>
     </nav>
 
     <main class="container my-4">
-      <section class="productos"></section>
-      <div>
+      <section class="productos">
         <p class="productos__saludo" id="saludo"></p>
         <div class="productos__categorias">
-          <div>Zapatillas</div>
-          <div>Camisetas</div>
+          <button id="btnZapatillas" class="btn btn-outline-dark">
+            Zapatillas
+          </button>
+          <button id="btnCamisetas" class="btn btn-outline-dark">
+            Camisetas
+          </button>
         </div>
-      </div>
+        <div class="productos__lista"></div>
+      </section>
     </main>
 
     <footer>Lorenzo Braunstein & Adrián López Da Silva</footer>
