@@ -3,6 +3,6 @@ const input = document.getElementById("nombre");
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
-  sessionStorage.setItem("nombreCliente", input.value);
+  sessionStorage.setItem("nombreCliente", input.value.trim());
   window.location.href = "productos.html";
 });
