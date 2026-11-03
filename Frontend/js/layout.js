@@ -1,5 +1,6 @@
-const saludo = document.getElementById("saludo");
+const saludoEl = document.getElementById("saludo");
 
-const nombreCliente = sessionStorage.getItem("nombreCliente");
-
-saludo.textContent = "Hola, " + nombreCliente;
+if (saludoEl) {
+  const nombre = sessionStorage.getItem('nombreCliente');
+  saludoEl.textContent = `¡Hola, ${nombre}! 👋`;
+}
