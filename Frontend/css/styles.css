@@ -42,14 +42,13 @@ main {
 .productos__lista {
   grid-area: lista;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  grid-template-columns: repeat(3, 1fr);   
   gap: 1rem;
 }
 
-/* En pantallas muy chicas forzamos 2 columnas fijas (mejor que una sola
-   gigante que ocupa toda la pantalla). */
-@media (max-width: 576px) {
-  .productos__lista { grid-template-columns: repeat(2, 1fr); }
+/* celulares 1 columna */
+@media (max-width: 480px) {
+  .productos__lista { grid-template-columns: 1fr; }
 }
 .producto-card {
   display: grid;

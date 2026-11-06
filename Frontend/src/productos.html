@@ -42,22 +42,153 @@
       </div>
     </nav>
 
-    <main class="container my-4">
-      <section class="productos">
-        <p class="productos__saludo h5" id="saludo"></p>
+  <main class="container my-4">
+  <section class="productos">
 
-        <div class="productos__categorias">
-          <button id="btnZapatillas" class="btn btn-outline-dark">Zapatillas</button>
-          <button id="btnCamisetas"  class="btn btn-outline-dark">Camisetas</button>
+    <p class="productos__saludo h5" id="saludo"></p>
+
+    <div class="productos__categorias">
+      <button id="btnZapatillas" class="btn btn-outline-dark">Zapatillas</button>
+      <button id="btnCamisetas"  class="btn btn-outline-dark">Camisetas</button>
+    </div>
+
+    <!-- Grilla de cards. Mas adelante, productos.js va a reemplazar
+         estas cards hardcodeadas por las que vengan del backend. -->
+    <div class="productos__lista">
+
+      <article class="producto-card">
+        <img class="producto-card__img"
+             src="https://placehold.co/400x400/1a1a1a/ee6730?text=LeBron+21"
+             alt="Nike LeBron 21" />
+
+        <div class="producto-card__info">
+          <h2 class="h6 mb-2">Nike LeBron 21</h2>
+          <ul class="list-unstyled small mb-0">
+            <li><strong>Marca:</strong> Nike</li>
+            <li><strong>Modelo:</strong> LeBron 21</li>
+            <li><strong>Talle:</strong> 42</li>
+            <li><strong>Color:</strong> Negro/Oro</li>
+            <li><strong>Jugador:</strong> LeBron James</li>
+          </ul>
         </div>
 
-        <div class="productos__lista"></div>
+        <p class="h5 mb-0">$240.000</p>
 
-        <!-- Hueco para la paginacion. La llena productos.js mas adelante -->
+        <button class="btn btn-primary w-100">Agregar al carrito</button>
+      </article>
 
-        <nav class="productos__paginacion" aria-label="Paginacion de productos"></nav>
-      </section>
-    </main>
+      <article class="producto-card">
+        <img class="producto-card__img"
+             src="https://placehold.co/400x400/1e3a8a/ffffff?text=Dame+8"
+             alt="Adidas Dame 8" />
+
+        <div class="producto-card__info">
+          <h2 class="h6 mb-2">Adidas Dame 8</h2>
+          <ul class="list-unstyled small mb-0">
+            <li><strong>Marca:</strong> Adidas</li>
+            <li><strong>Modelo:</strong> Dame 8</li>
+            <li><strong>Talle:</strong> 41</li>
+            <li><strong>Color:</strong> Azul</li>
+            <li><strong>Jugador:</strong> Damian Lillard</li>
+          </ul>
+        </div>
+
+        <p class="h5 mb-0">$199.000</p>
+
+        <button class="btn btn-primary w-100">Agregar al carrito</button>
+      </article>
+
+      <article class="producto-card">
+        <img class="producto-card__img"
+             src="https://placehold.co/400x400/7c3aed/ffffff?text=Luka+2"
+             alt="Jordan Luka 2" />
+
+        <div class="producto-card__info">
+          <h2 class="h6 mb-2">Jordan Luka 2</h2>
+          <ul class="list-unstyled small mb-0">
+            <li><strong>Marca:</strong> Jordan</li>
+            <li><strong>Modelo:</strong> Luka 2</li>
+            <li><strong>Talle:</strong> 43</li>
+            <li><strong>Color:</strong> Violeta</li>
+            <li><strong>Jugador:</strong> Luka Doncic</li>
+          </ul>
+        </div>
+
+        <p class="h5 mb-0">$230.000</p>
+
+        <button class="btn btn-primary w-100">Agregar al carrito</button>
+      </article>
+
+      <article class="producto-card">
+        <img class="producto-card__img"
+             src="https://placehold.co/400x400/7c3aed/fde047?text=Lakers+23"
+             alt="Camiseta Lakers LeBron" />
+
+        <div class="producto-card__info">
+          <h2 class="h6 mb-2">Nike Lakers Icon</h2>
+          <ul class="list-unstyled small mb-0">
+            <li><strong>Marca:</strong> Nike</li>
+            <li><strong>Modelo:</strong> Lakers Icon 23</li>
+            <li><strong>Talle:</strong> S/M/L</li>
+            <li><strong>Color:</strong> Violeta/Oro</li>
+            <li><strong>Jugador:</strong> LeBron James</li>
+          </ul>
+        </div>
+
+        <p class="h5 mb-0">$85.000</p>
+
+        <button class="btn btn-primary w-100">Agregar al carrito</button>
+      </article>
+
+      <article class="producto-card">
+        <img class="producto-card__img"
+             src="https://placehold.co/400x400/1e3a8a/eab308?text=GSW+30"
+             alt="Camiseta Warriors Curry" />
+
+        <div class="producto-card__info">
+          <h2 class="h6 mb-2">Nike Warriors Icon</h2>
+          <ul class="list-unstyled small mb-0">
+            <li><strong>Marca:</strong> Nike</li>
+            <li><strong>Modelo:</strong> Warriors Icon 30</li>
+            <li><strong>Talle:</strong> S/M/L</li>
+            <li><strong>Color:</strong> Azul/Amarillo</li>
+            <li><strong>Jugador:</strong> Stephen Curry</li>
+          </ul>
+        </div>
+
+        <p class="h5 mb-0">$85.000</p>
+
+        <button class="btn btn-primary w-100">Agregar al carrito</button>
+      </article>
+
+      <article class="producto-card">
+        <img class="producto-card__img"
+             src="https://placehold.co/400x400/dc2626/000000?text=Bulls+23"
+             alt="Camiseta Bulls Jordan" />
+
+        <div class="producto-card__info">
+          <h2 class="h6 mb-2">Nike Bulls Retro</h2>
+          <ul class="list-unstyled small mb-0">
+            <li><strong>Marca:</strong> Nike</li>
+            <li><strong>Modelo:</strong> Bulls Retro 23</li>
+            <li><strong>Talle:</strong> S/M/L</li>
+            <li><strong>Color:</strong> Rojo/Negro</li>
+            <li><strong>Jugador:</strong> Michael Jordan</li>
+          </ul>
+        </div>
+
+        <p class="h5 mb-0">$90.000</p>
+
+        <button class="btn btn-primary w-100">Agregar al carrito</button>
+      </article>
+
+    </div>
+
+    <!-- Hueco para la paginacion (vacio por ahora) -->
+    <nav class="productos__paginacion" aria-label="Paginacion de productos"></nav>
+
+  </section>
+</main>
 
     <footer class="bg-body-tertiary text-center py-3 border-top">
       <small class="text-body-secondary">
