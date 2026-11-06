@@ -1,4 +1,5 @@
 const express = require("express");
+const productoRouter = require("./Productos/producto.routes");
 
 const sequelize = require("./Database/sequelize");
 
@@ -17,6 +18,8 @@ app.use(
     allowedHeaders: "content-type",
   }),
 );
+
+app.use("/productos", productoRouter);
 
 const PORT = 3000;
 
