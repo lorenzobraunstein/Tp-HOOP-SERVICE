@@ -1,4 +1,11 @@
-const { DataTypes, INTEGER, STRING, FLOAT, BOOLEAN } = require("sequelize");
+const {
+  DataTypes,
+  INTEGER,
+  STRING,
+  FLOAT,
+  BOOLEAN,
+  ENUM,
+} = require("sequelize");
 const sequelize = require("../Database/sequelize");
 
 const Producto = sequelize.define(
@@ -18,7 +25,7 @@ const Producto = sequelize.define(
       allowNull: false,
     },
     talle: {
-      type: INTEGER,
+      type: STRING,
       allowNull: false,
     },
     color: {
@@ -33,8 +40,17 @@ const Producto = sequelize.define(
       type: FLOAT,
       allowNull: false,
     },
-    isActive: {
+    tipo: {
+      type: ENUM("zapatillas", "camisetas"),
+      allowNull: false,
+    },
+    imagen: {
+      type: STRING,
+      allowNull: true,
+    },
+    activo: {
       type: BOOLEAN,
+      defaultValue: true,
     },
   },
   {
