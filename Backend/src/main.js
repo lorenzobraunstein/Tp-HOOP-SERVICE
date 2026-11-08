@@ -1,5 +1,6 @@
 const express = require("express");
 const productoRouter = require("./Productos/producto.routes");
+const usuarioRouter = require("./Usuarios/usuario.routes");
 
 const sequelize = require("./Database/sequelize");
 
@@ -20,6 +21,7 @@ app.use(
 );
 
 app.use("/productos", productoRouter);
+app.use("/usuarios", usuarioRouter);
 
 const PORT = 3000;
 
