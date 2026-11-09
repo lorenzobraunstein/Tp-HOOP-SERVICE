@@ -1,3 +1,35 @@
+/* ---- Paleta HOOP (sale del logo: #bd0038) ---- */
+:root {
+  --bs-primary: #bd0038;
+  --bs-primary-rgb: 189, 0, 56;     /* esto hace que bg-primary del navbar sea carmín */
+  --bs-link-color: #bd0038;
+  --bs-link-hover-color: #94002c;
+  --bs-body-bg: #fbf8f9;            /* blanco tibio en vez del gris azulado */
+  --bs-border-color: #e8dde0;
+}
+
+/* Los .btn de Bootstrap traen el azul adentro, hay que pisarlos aparte */
+.btn-primary {
+  --bs-btn-bg: #bd0038;
+  --bs-btn-border-color: #bd0038;
+  --bs-btn-hover-bg: #94002c;
+  --bs-btn-hover-border-color: #94002c;
+  --bs-btn-active-bg: #94002c;
+  --bs-btn-active-border-color: #94002c;
+}
+
+.btn-outline-primary {
+  --bs-btn-color: #bd0038;
+  --bs-btn-border-color: #bd0038;
+  --bs-btn-hover-bg: #bd0038;
+  --bs-btn-hover-border-color: #bd0038;
+}
+
+.btn-outline-dark {
+  --bs-btn-hover-bg: #bd0038;
+  --bs-btn-hover-border-color: #bd0038;
+}
+
 body {
   display: grid;
   grid-template-rows: auto 1fr auto;
@@ -145,7 +177,7 @@ main {
   gap: 1rem;
   width: min(100%, 420px);
   padding: 1.5rem;
-  border: 2px dashed var(--bs-border-color);
+  border: 2px dashed var(#e8912f);
   border-radius: 0.5rem;
   background: var(--bs-body-bg);
   grid-template-areas:
