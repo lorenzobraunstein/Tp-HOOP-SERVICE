@@ -1,3 +1,5 @@
+const Usuario = require("./usuario.model");
+
 function validarDatosUsuario(req, res, next) {
   const { email, contraseña } = req.body;
 
@@ -13,4 +15,17 @@ function validarDatosUsuario(req, res, next) {
   }
 }
 
-module.exports = { validarDatosUsuario };
+const validarUsuarioExiste = async (req, res, next) => {
+  const { email } = req.body;
+
+  const usuario = await Usuario.findOne({ where: { email } });
+
+  if (usuario) {
+    req.hash = usuario.contraseña;
+    next();
+  } else {
+    res.status(400).send({ mensaje: "Las credenciales no son correctas" });
+  }
+};
+
+module.exports = { validarDatosUsuario, validarUsuarioExiste };

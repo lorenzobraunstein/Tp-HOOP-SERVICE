@@ -1,11 +1,6 @@
-const { Op } = require("sequelize");
 const Producto = require("./producto.model");
 
 const crearProducto = async (req, res) => {
-  req.body.imagen = req.file
-    ? `http://localhost:3000/imagenes/${req.file.filename}`
-    : null;
-
   const productoCreado = await Producto.create(req.body);
 
   res.status(201).send(productoCreado);
@@ -34,28 +29,24 @@ const traerProductos = async (req, res) => {
 const modificarProductoPorId = async (req, res) => {
   const { id } = req.params;
 
-  if (req.file) {
-    req.body.imagen = `http://localhost:3000/imagenes/${req.file.filename}`;
-  }
-
-  const productoModificado = await Producto.update(req.body, {
+  await Producto.update(req.body, {
     where: { id },
   });
 
-  res.send(productoModificado);
+  res.status(200).send({ mensaje: "Producto actualizado exitosamente" });
 };
 
 const desactivarProductoPorId = async (req, res) => {
   const { id } = req.params;
 
-  const productoDesactivado = await Producto.update(
+  await Producto.update(
     { activo: false },
     {
       where: { id: id },
     },
   );
 
-  res.send(productoDesactivado);
+  res.status(200).send({ mensaje: "Baja de producto realizada exitosamente" });
 };
 
 module.exports = {

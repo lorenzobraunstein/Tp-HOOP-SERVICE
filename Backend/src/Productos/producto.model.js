@@ -1,11 +1,4 @@
-const {
-  DataTypes,
-  INTEGER,
-  STRING,
-  FLOAT,
-  BOOLEAN,
-  ENUM,
-} = require("sequelize");
+const { INTEGER, STRING, FLOAT, BOOLEAN, ENUM } = require("sequelize");
 const sequelize = require("../Database/sequelize");
 
 const Producto = sequelize.define(

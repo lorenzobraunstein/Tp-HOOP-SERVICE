@@ -25,4 +25,11 @@ const upload = multer({
   limits: { fileSize: 5 * 1024 * 1024 },
 }); // Defino que guardo las imagenes en /img
 
-module.exports = upload;
+const validarImagen = (req, res, next) => {
+  if (req.file) {
+    req.body.imagen = `http://localhost:3000/imagenes/${req.file.filename}`;
+  }
+  next();
+};
+
+module.exports = { upload, validarImagen };

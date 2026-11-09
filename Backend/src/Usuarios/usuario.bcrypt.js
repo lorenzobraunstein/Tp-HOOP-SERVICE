@@ -8,8 +8,13 @@ const encriptarContraseña = (req, res, next) => {
   next();
 };
 
-const compararContraseña = (contraseña, contraseñaEncriptada) => {
-  return bcrypt.compareSync(contraseña, contraseñaEncriptada);
+const compararContraseña = (req, res, next) => {
+  const { contraseña } = req.body;
+  const { hash } = req;
+
+  req.contraseñaValida = bcrypt.compareSync(contraseña, hash);
+
+  next();
 };
 
 module.exports = { encriptarContraseña, compararContraseña };

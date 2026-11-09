@@ -1,11 +1,21 @@
 const express = require("express");
-const { validarDatosUsuario } = require("./usuario.middleware");
-const { encriptarContraseña } = require("./usuario.bcrypt");
+const {
+  validarDatosUsuario,
+  validarUsuarioExiste,
+} = require("./usuario.middleware");
+const { encriptarContraseña, compararContraseña } = require("./usuario.bcrypt");
 
-const { crearUsuario } = require("./usuario.controller");
+const { crearUsuario, validarLogin } = require("./usuario.controller");
 
 const usuarioRouter = express.Router();
 
 usuarioRouter.post("/", validarDatosUsuario, encriptarContraseña, crearUsuario);
+
+usuarioRouter.post(
+  "/login",
+  validarUsuarioExiste,
+  compararContraseña,
+  validarLogin,
+);
 
 module.exports = usuarioRouter;

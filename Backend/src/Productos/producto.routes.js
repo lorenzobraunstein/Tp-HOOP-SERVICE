@@ -1,5 +1,5 @@
 const express = require("express");
-const upload = require("./producto.multer");
+const { upload, validarImagen } = require("./producto.multer");
 const { validarDatosProducto } = require("./producto.middleware");
 
 const {
@@ -16,6 +16,7 @@ productoRouter.post(
   "/",
   upload.single("imagen"),
   validarDatosProducto,
+  validarImagen,
   crearProducto,
 );
 
@@ -27,6 +28,7 @@ productoRouter.put(
   "/:id",
   upload.single("imagen"),
   validarDatosProducto,
+  validarImagen,
   modificarProductoPorId,
 );
 
