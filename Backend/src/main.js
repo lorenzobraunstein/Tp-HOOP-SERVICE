@@ -1,4 +1,5 @@
 const express = require("express");
+const path = require("node:path");
 const productoRouter = require("./Productos/producto.routes");
 const usuarioRouter = require("./Usuarios/usuario.routes");
 
@@ -10,8 +11,10 @@ const app = express();
 
 app.use(express.json());
 
-app.use("/imagenes", express.static("img"));
-app.use("/public", express.static("public"));
+app.use("/imagenes", express.static(path.join(__dirname, "img")));
+app.use("/public", express.static(path.join(__dirname, "public")));
+app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "Templates"));
 
 app.use(
   cors({

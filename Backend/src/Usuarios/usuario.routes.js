@@ -9,6 +9,10 @@ const { crearUsuario, validarLogin } = require("./usuario.controller");
 
 const usuarioRouter = express.Router();
 
+usuarioRouter.get("/login", (req, res) => {
+  res.render("login");
+});
+
 usuarioRouter.post("/", validarDatosUsuario, encriptarContraseña, crearUsuario);
 
 usuarioRouter.post(
