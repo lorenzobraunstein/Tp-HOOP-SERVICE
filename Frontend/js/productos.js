@@ -1,4 +1,13 @@
+// ============================================================
+// productos.js
+// Trae los productos del backend, los dibuja como cards y
+// permite sumar o restar cantidades del carrito.
+// Usa obtenerCarrito y guardarCarrito, que vienen de layout.js.
+// ============================================================
+
 const listaProductos = document.getElementById("lista-productos");
+const contenedorCategorias = document.querySelector(".productos__categorias");
+
 const btnMostrarTodo = document.getElementById("btnTodo");
 const btnMostrarZapatillas = document.getElementById("btnZapatillas");
 const btnMostrarCamisetas = document.getElementById("btnCamisetas");
@@ -24,7 +33,7 @@ btnMostrarCamisetas.addEventListener("click", () => {
   mostrarFiltroActivo(btnMostrarCamisetas);
 });
 
-const traerProductos = async (req, res) => {
+const traerProductos = async () => {
   const peticion = await fetch("http://localhost:3000/productos");
 
   const datos = await peticion.json();
@@ -34,6 +43,10 @@ const traerProductos = async (req, res) => {
     mostrarProductos(productos);
   }
 };
+
+// Suma o resta cantidad de un producto. Si todavía no estaba en
+// el carrito lo agrega, y al final descarta los que quedaron en
+// cero, que es la forma de "quitar" un producto.
 
 function modificarCantidadCarrito(producto, cambio, div) {
   const carrito = obtenerCarrito();
@@ -47,37 +60,18 @@ function modificarCantidadCarrito(producto, cambio, div) {
   });
 
   if (!productoYaAgregado) {
-    carrito.push({
-      ...producto,
-      cantidad: 1,
-    });
+    carrito.push({ ...producto, cantidad: 1 });
   }
 
-  const nuevoCarrito = [];
+  const carritoFiltrado = carrito.filter((item) => item.cantidad > 0);
 
-  carrito.forEach((item) => {
-    if (item.cantidad > 0) {
-      nuevoCarrito.push(item);
-    }
-  });
-
-  localStorage.setItem("carrito", JSON.stringify(nuevoCarrito));
+  guardarCarrito(carritoFiltrado);
 
   mostrarBotonesCantidad(producto, div);
 }
 
-function obtenerCarrito() {
-  const carritoGuardadoString = localStorage.getItem("carrito");
-
-  if (carritoGuardadoString) {
-    const carritoGuardado = JSON.parse(carritoGuardadoString);
-
-    if (Array.isArray(carritoGuardado)) {
-      return carritoGuardado;
-    }
-  }
-  return [];
-}
+// Dibuja los botones de la card: si el producto no está en el
+// carrito muestra "Agregar", y si ya está muestra - cantidad +.
 
 function mostrarBotonesCantidad(producto, div) {
   const carrito = obtenerCarrito();
@@ -132,10 +126,10 @@ function mostrarBotonesCantidad(producto, div) {
   }
 }
 
-function mostrarProductos(productos) {
+function mostrarProductos(productosAMostrar) {
   listaProductos.replaceChildren();
 
-  productos.forEach((producto) => {
+  productosAMostrar.forEach((producto) => {
     const card = document.createElement("article");
     card.classList.add("producto-card", "text-center");
 
@@ -170,12 +164,17 @@ function filtrarProductosPorTipo(tipo) {
   mostrarProductos(productosFiltrado);
 }
 
+// Busca los botones DENTRO de .productos__categorias. Si usara
+// querySelectorAll(".btn") agarraría también los de la navbar.
+
 function mostrarFiltroActivo(boton) {
-  const botones = document.querySelectorAll(".btn");
+  const botones = contenedorCategorias.querySelectorAll(".btn");
+
   botones.forEach((boton) => {
     boton.classList.remove("btn-primary");
     boton.classList.add("btn-outline-dark");
   });
+
   boton.classList.remove("btn-outline-dark");
   boton.classList.add("btn-primary");
 }
