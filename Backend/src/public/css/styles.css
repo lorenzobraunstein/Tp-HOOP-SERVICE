@@ -1,0 +1,218 @@
+/* ---- Paleta HOOP (sale del logo: #bd0038) ---- */
+:root {
+  --bs-primary: #bd0038;
+  --bs-primary-rgb: 189, 0, 56;     /* esto hace que bg-primary del navbar sea carmín */
+  --bs-link-color: #bd0038;
+  --bs-link-hover-color: #94002c;
+}
+
+[data-bs-theme="light"] {
+  --bs-body-bg: #fbf8f9;            /* blanco tibio en vez del gris azulado */
+  --bs-border-color: #e8dde0;
+}
+
+/* Los .btn de Bootstrap traen el azul adentro, hay que pisarlos aparte */
+.btn-primary {
+  --bs-btn-bg: #bd0038;
+  --bs-btn-border-color: #bd0038;
+  --bs-btn-hover-bg: #94002c;
+  --bs-btn-hover-border-color: #94002c;
+  --bs-btn-active-bg: #94002c;
+  --bs-btn-active-border-color: #94002c;
+}
+
+.btn-outline-primary {
+  --bs-btn-color: #bd0038;
+  --bs-btn-border-color: #bd0038;
+  --bs-btn-hover-bg: #bd0038;
+  --bs-btn-hover-border-color: #bd0038;
+}
+
+.btn-outline-dark {
+  --bs-btn-hover-bg: #bd0038;
+  --bs-btn-hover-border-color: #bd0038;
+}
+
+body {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
+}
+
+main {
+  padding: 2rem 1rem;
+}
+
+.bienvenida {
+  display: grid;
+  place-items: center;
+}
+
+.bienvenida__card {
+  display: grid;
+  gap: 1rem;
+  justify-items: center;
+  text-align: center;
+  width: min(100%, 420px);
+  padding: 2rem;
+  border: 1px solid var(--bs-border-color);
+  border-radius: 1rem;
+  background: var(--bs-tertiary-bg);
+}
+
+.productos {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-areas:
+    "saludo"
+    "categorias"
+    "lista"
+    "paginacion";
+}
+
+.productos__saludo     { grid-area: saludo; }
+.productos__categorias { grid-area: categorias; display: flex; gap: 0.5rem; }
+.productos__paginacion { grid-area: paginacion; justify-self: center; }
+
+.productos__lista {
+  grid-area: lista;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);   
+  gap: 1rem;
+}
+
+/* celulares 1 columna */
+@media (max-width: 480px) {
+  .productos__lista { grid-template-columns: 1fr; }
+}
+.producto-card {
+  display: grid;
+  grid-template-rows: auto 1fr auto auto;
+  gap: .5rem;
+  padding: 1rem;
+  border: 1px solid var(--bs-border-color);
+  border-radius: 0.75rem;
+  background: var(--bs-tertiary-bg);
+}
+
+.producto-card__img {
+  width: 100%;
+  aspect-ratio: 1 / 1;   /* siempre cuadrada, no importa el tamano original */
+  object-fit: cover;     /* recorta sin deformar */
+  border-radius: 0.5rem;
+}
+
+.producto-card__info { align-content: start; }
+
+.carrito {
+  display: grid;
+  gap: 1.5rem;
+  align-items: start;
+  grid-template-columns: 2fr 1fr;
+  grid-template-areas:
+    "titulo titulo"
+    "items  resumen";
+}
+
+.carrito__titulo { grid-area: titulo; }
+
+.carrito__items {
+  grid-area: items;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.carrito__resumen {
+  grid-area: resumen;
+  display: grid;
+  gap: 1rem;
+  padding: 1.25rem;
+  border: 1px solid var(--bs-border-color);
+  border-radius: 0.75rem;
+  background: var(--bs-tertiary-bg);
+}
+
+/* Cada fila del carrito: imagen | nombre | [- n +] | subtotal | 🗑 */
+.carrito-item {
+  display: grid;
+  align-items: center;
+  gap: 1rem;
+  grid-template-columns: 80px 1fr auto auto auto;
+  grid-template-areas: "img nombre cantidad subtotal quitar";
+  padding: 0.75rem;
+  border: 1px solid var(--bs-border-color);
+  border-radius: 0.75rem;
+}
+
+.carrito-item__img       { grid-area: img; width: 80px; aspect-ratio: 1/1; object-fit: cover; }
+.carrito-item__nombre    { grid-area: nombre; }
+.carrito-item__cantidad  { grid-area: cantidad; display: flex; align-items: center; gap: 0.5rem; }
+.carrito-item__subtotal  { grid-area: subtotal; font-weight: 600; }
+.carrito-item__quitar    { grid-area: quitar; }
+
+/* En mobile el resumen baja y el item se reacomoda en 2 filas */
+@media (max-width: 768px) {
+  .carrito {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "titulo"
+      "items"
+      "resumen";
+  }
+
+  .carrito-item {
+    grid-template-columns: 80px 1fr auto;
+    grid-template-areas:
+      "img nombre   quitar"
+      "img cantidad subtotal";
+  }
+}
+
+.ticket {
+  display: grid;
+  justify-items: center;
+  align-content: start;
+  gap: 1rem;
+}
+
+.ticket__papel {
+  display: grid;
+  gap: 1rem;
+  width: min(100%, 420px);
+  padding: 1.5rem;
+  border: 2px dashed var(#e8912f);
+  border-radius: 0.5rem;
+  background: var(--bs-body-bg);
+  grid-template-areas:
+    "encabezado"
+    "datos"
+    "detalle"
+    "total";
+}
+
+.ticket__encabezado { grid-area: encabezado; text-align: center; }
+.ticket__datos      { grid-area: datos; display: grid; gap: 0.25rem; }
+.ticket__detalle    { grid-area: detalle; display: grid; gap: 0.5rem; }
+.ticket__total      { grid-area: total; font-weight: 700; text-align: right; }
+
+/* Cada linea del ticket: cantidad | producto | precio */
+.ticket__linea {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 0.5rem;
+}
+
+.ticket__acciones {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  width: min(100%, 420px);
+}
+
+@media (min-width: 768px) {
+  .nav-centrado {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
