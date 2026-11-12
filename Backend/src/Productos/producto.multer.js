@@ -1,8 +1,10 @@
+const path = require("node:path");
+
 const multer = require("multer");
 
 const storage = multer.diskStorage({
   destination: (req, file, callback) => {
-    callback(null, "img");
+    callback(null, path.join(__dirname, "../Public/img"));
   },
   filename: (req, file, callback) => {
     const esImagen = file.mimetype.includes("image");

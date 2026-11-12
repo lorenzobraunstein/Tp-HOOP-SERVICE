@@ -16,7 +16,7 @@
   </head>
 
   <body data-page="carrito">
-        <nav class="navbar navbar-expand-md bg-primary" data-bs-theme="dark">
+    <nav class="navbar navbar-expand-md bg-primary" data-bs-theme="dark">
       <div class="container-fluid">
         <a
           class="navbar-brand d-flex align-items-center gap-2"
@@ -55,7 +55,8 @@
                <ul> está absoluto y ya no lo empuja. -->
           <button
             id="btn-tema"
-            type="button" class="btn btn-outline-light btn-sm ms-auto"
+            type="button"
+            class="btn btn-outline-light btn-sm ms-auto"
           >
             🌙
           </button>
@@ -68,7 +69,7 @@
         <h1 class="carrito__titulo h3">Tu carrito</h1>
 
         <!-- Las filas las llena carrito.js -->
-        <div class="carrito__items"></div>
+        <div class="carrito__items" id="lista__carrito"></div>
 
         <!-- Resumen: a la derecha en desktop, abajo en mobile -->
         <aside class="carrito__resumen">
@@ -98,5 +99,6 @@
       crossorigin="anonymous"
     ></script>
     <script src="../js/layout.js"></script>
+    <script src="../js/carrito.js"></script>
   </body>
 </html>
