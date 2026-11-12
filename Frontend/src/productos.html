@@ -31,11 +31,17 @@
           />
           <span class="fw-semibold">HOOP SERVICE</span>
         </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#nav-contenido"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
         <div class="collapse navbar-collapse" id="nav-contenido">
-          <ul
-            class="navbar-nav position-absolute top-50 start-50 translate-middle"
-          >
+          <ul class="navbar-nav mx-auto nav-centrado">
             <li class="nav-item">
               <a class="nav-link" href="./productos.html">Productos</a>
             </li>
@@ -43,6 +49,11 @@
               <a class="nav-link" href="./carrito.html">Carrito</a>
             </li>
           </ul>
+
+          <div class="ms-auto d-flex align-items-center gap-2">
+          <button id="btn-tema" type="button" class="btn btn-outline-light btn-sm">
+            🌙
+          </button>
         </div>
       </div>
     </nav>
@@ -52,26 +63,20 @@
         <p class="productos__saludo h5" id="saludo"></p>
 
         <div class="productos__categorias">
-          <button id="btnTodo" type="button" class="btn btn-primary">
+          <button id="btnTodo" type="button" class="btn btn-outline-primary">
             Todo
           </button>
-          <button id="btnZapatillas" type="button" class="btn btn-outline-dark">
+          <button id="btnZapatillas" type="button" class="btn btn-outline-primary">
             Zapatillas
           </button>
-          <button id="btnCamisetas" type="button" class="btn btn-outline-dark">
+          <button id="btnCamisetas" type="button" class="btn btn-outline-primary">
             Camisetas
           </button>
         </div>
 
-        <!-- Grilla de cards. Mas adelante, productos.js va a reemplazar
-         estas cards hardcodeadas por las que vengan del backend. -->
         <div class="productos__lista" id="lista-productos"></div>
 
-        <!-- Hueco para la paginacion (vacio por ahora) -->
-        <nav
-          class="productos__paginacion"
-          aria-label="Paginacion de productos"
-        ></nav>
+        <nav class="productos__paginacion" id="paginacion"></nav>
       </section>
     </main>
 
@@ -87,7 +92,6 @@
       crossorigin="anonymous"
     ></script>
     <script src="../js/layout.js"></script>
-    <script src="..//js/productos.js"></script>
-    <!-- productos.js lo armamos en el siguiente paso -->
+    <script src="../js/productos.js"></script>
   </body>
 </html>

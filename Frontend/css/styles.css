@@ -4,6 +4,9 @@
   --bs-primary-rgb: 189, 0, 56;     /* esto hace que bg-primary del navbar sea carmín */
   --bs-link-color: #bd0038;
   --bs-link-hover-color: #94002c;
+}
+
+[data-bs-theme="light"] {
   --bs-body-bg: #fbf8f9;            /* blanco tibio en vez del gris azulado */
   --bs-border-color: #e8dde0;
 }
@@ -204,4 +207,12 @@ main {
   grid-template-columns: 1fr 1fr;
   gap: 0.75rem;
   width: min(100%, 420px);
+}
+
+@media (min-width: 768px) {
+  .nav-centrado {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
 }
