@@ -6,6 +6,7 @@ const {
   crearProducto,
   traerProductoPorId,
   traerProductos,
+  traerDashboard,
   modificarProductoPorId,
   desactivarProductoPorId,
 } = require("./producto.controller");
@@ -19,6 +20,8 @@ productoRouter.post(
   validarImagen,
   crearProducto,
 );
+
+productoRouter.get("/dashboard", traerDashboard);
 
 productoRouter.get("/:id", traerProductoPorId);
 

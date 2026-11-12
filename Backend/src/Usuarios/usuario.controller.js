@@ -6,11 +6,11 @@ const crearUsuario = async (req, res) => {
   res.status(201).send({ mensaje: "Usuario creado exitosamente" });
 };
 
-const validarLogin = async (req, res) => {
+const validarLogin = (req, res) => {
   if (req.contraseñaValida) {
-    res.status(200).send({ mensaje: "Sesion iniciada exitosamente" });
+    res.redirect("/productos/dashboard");
   } else {
-    res.status(401).send({ mensaje: "Las credenciales no son correctas" });
+    res.redirect("/usuarios/login");
   }
 };
 
