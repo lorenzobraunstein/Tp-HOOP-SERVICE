@@ -26,6 +26,20 @@ const traerProductos = async (req, res) => {
   res.send(productos);
 };
 
+const traerDashboard = async (req, res) => {
+  const zapatillas = await Producto.findAll({
+    where: { tipo: "zapatillas" },
+    order: [["id", "ASC"]],
+  });
+
+  const camisetas = await Producto.findAll({
+    where: { tipo: "camisetas" },
+    order: [["id", "ASC"]],
+  });
+
+  res.render("dashboard", { zapatillas, camisetas });
+};
+
 const modificarProductoPorId = async (req, res) => {
   const { id } = req.params;
 
@@ -53,6 +67,7 @@ module.exports = {
   crearProducto,
   traerProductoPorId,
   traerProductos,
+  traerDashboard,
   modificarProductoPorId,
   desactivarProductoPorId,
 };

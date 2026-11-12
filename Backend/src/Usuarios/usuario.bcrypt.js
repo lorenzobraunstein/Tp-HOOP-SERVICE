@@ -9,10 +9,10 @@ const encriptarContraseña = (req, res, next) => {
 };
 
 const compararContraseña = (req, res, next) => {
-  const { contraseña } = req.body;
+  const { clave } = req.body;
   const { hash } = req;
 
-  req.contraseñaValida = bcrypt.compareSync(contraseña, hash);
+  req.contraseñaValida = bcrypt.compareSync(clave, hash);
 
   next();
 };

@@ -1,4 +1,6 @@
 const express = require("express");
+const multer = require("multer");
+
 const {
   validarDatosUsuario,
   validarUsuarioExiste,
@@ -15,11 +17,6 @@ usuarioRouter.get("/login", (req, res) => {
 
 usuarioRouter.post("/", validarDatosUsuario, encriptarContraseña, crearUsuario);
 
-usuarioRouter.post(
-  "/login",
-  validarUsuarioExiste,
-  compararContraseña,
-  validarLogin,
-);
+usuarioRouter.post("/login", multer().none(), validarUsuarioExiste, compararContraseña, validarLogin, );
 
 module.exports = usuarioRouter;
