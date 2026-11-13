@@ -9,6 +9,7 @@ const {
   traerDashboard,
   modificarProductoPorId,
   desactivarProductoPorId,
+  activarProductoPorId,
 } = require("./producto.controller");
 
 const productoRouter = express.Router();
@@ -35,6 +36,8 @@ productoRouter.put(
   modificarProductoPorId,
 );
 
-productoRouter.delete("/:id", desactivarProductoPorId);
+productoRouter.patch("/desactivar/:id", desactivarProductoPorId);
+
+productoRouter.patch("/activar/:id", activarProductoPorId);
 
 module.exports = productoRouter;

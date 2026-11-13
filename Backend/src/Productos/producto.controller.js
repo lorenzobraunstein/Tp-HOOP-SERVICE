@@ -63,6 +63,19 @@ const desactivarProductoPorId = async (req, res) => {
   res.status(200).send({ mensaje: "Baja de producto realizada exitosamente" });
 };
 
+const activarProductoPorId = async (req, res) => {
+  const { id } = req.params;
+
+  await Producto.update(
+    { activo: true },
+    {
+      where: { id: id },
+    },
+  );
+
+  res.status(200).send({ mensaje: "Alta de producto realizada exitosamente" });
+};
+
 module.exports = {
   crearProducto,
   traerProductoPorId,
@@ -70,4 +83,5 @@ module.exports = {
   traerDashboard,
   modificarProductoPorId,
   desactivarProductoPorId,
+  activarProductoPorId,
 };

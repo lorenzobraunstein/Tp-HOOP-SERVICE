@@ -5,19 +5,6 @@ window.addEventListener("load", () => {
   mostrarCarrito();
 });
 
-function obtenerCarrito() {
-  const carritoGuardadoString = localStorage.getItem("carrito");
-
-  if (carritoGuardadoString) {
-    const carritoGuardado = JSON.parse(carritoGuardadoString);
-
-    if (Array.isArray(carritoGuardado)) {
-      return carritoGuardado;
-    }
-  }
-  return [];
-}
-
 function mostrarCarrito() {
   const carrito = obtenerCarrito();
 
