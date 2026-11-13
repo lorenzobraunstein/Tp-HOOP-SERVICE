@@ -2,6 +2,7 @@ const express = require("express");
 const path = require("node:path");
 const productoRouter = require("./Productos/producto.routes");
 const usuarioRouter = require("./Usuarios/usuario.routes");
+const ventaRouter = require("./Ventas/venta.routes");
 
 const sequelize = require("./Database/sequelize");
 
@@ -25,6 +26,7 @@ app.use(
 
 app.use("/productos", productoRouter);
 app.use("/usuarios", usuarioRouter);
+app.use("/ventas", ventaRouter);
 
 const PORT = 3000;
 
