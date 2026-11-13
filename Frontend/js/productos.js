@@ -39,7 +39,7 @@ const traerProductos = async () => {
   const datos = await peticion.json();
 
   if (peticion.ok) {
-    productos = datos;
+    productos = datos.filter((producto) => producto.activo === true);
     mostrarProductos(productos);
   }
 };

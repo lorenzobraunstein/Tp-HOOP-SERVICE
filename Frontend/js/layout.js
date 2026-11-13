@@ -75,3 +75,13 @@ function obtenerCarrito() {
 function guardarCarrito(carrito) {
   localStorage.setItem("carrito", JSON.stringify(carrito));
 }
+
+function calcularTotal(carrito) {
+  let total = 0;
+
+  carrito.forEach((producto) => {
+    total += producto.precio * producto.cantidad;
+  });
+
+  return total;
+}

@@ -1,5 +1,5 @@
-listaCarrito = document.getElementById("lista__carrito");
-totalCarrito = document.getElementById("carrito-total");
+const listaCarrito = document.getElementById("lista__carrito");
+const totalCarrito = document.getElementById("carrito-total");
 
 window.addEventListener("load", () => {
   mostrarCarrito();
@@ -12,14 +12,14 @@ function mostrarCarrito() {
 
   carrito.forEach((producto) => {
     const card = document.createElement("article");
-    card.classList.add("producto-card", "text-center");
+    card.classList.add("carrito-item");
 
     const imagen = document.createElement("img");
-    imagen.classList.add("producto-card__img");
+    imagen.classList.add("carrito-item__img");
     imagen.src = producto.imagen;
 
     const titulo = document.createElement("h2");
-    titulo.classList.add("h4", "mb-2", "fw-bold");
+    titulo.classList.add("carrito-item__nombre", "h4", "mb-2", "fw-bold");
     titulo.textContent = `${producto.marca} ${producto.modelo}`;
 
     const precio = document.createElement("p");
@@ -27,7 +27,7 @@ function mostrarCarrito() {
     precio.textContent = `$${producto.precio}`;
 
     const subtotal = document.createElement("p");
-    subtotal.classList.add("h6", "mb-0");
+    subtotal.classList.add("carrito-item__subtotal", "h6", "mb-0");
     subtotal.textContent = `Subtotal: $${producto.precio * producto.cantidad}`;
 
     const botonQuitar = document.createElement("button");
@@ -50,6 +50,7 @@ function mostrarCarrito() {
     botonEliminar.classList.add("btn", "btn-primary", "ms-2");
 
     const controles = document.createElement("div");
+    controles.classList.add("carrito-item__cantidad");
 
     botonQuitar.addEventListener("click", () => {
       modificarCantidadCarrito(producto, -1);
@@ -68,17 +69,7 @@ function mostrarCarrito() {
 
     listaCarrito.append(card);
   });
-  calcularTotal(carrito);
-}
-
-function calcularTotal(carrito) {
-  let total = 0;
-
-  carrito.forEach((producto) => {
-    total += producto.precio * producto.cantidad;
-  });
-
-  totalCarrito.textContent = `$${total}`;
+  totalCarrito.textContent = `$${calcularTotal(carrito)}`;
 }
 
 function modificarCantidadCarrito(producto, cambio) {
