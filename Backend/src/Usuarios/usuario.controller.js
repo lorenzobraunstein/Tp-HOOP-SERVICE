@@ -8,9 +8,13 @@ const crearUsuario = async (req, res) => {
 
 const validarLogin = (req, res) => {
   if (req.contraseñaValida) {
-    res.redirect("/productos/dashboard");
+    res.status(200).send({
+      mensaje: "Inicio de sesión exitoso",
+    });
   } else {
-    res.redirect("/usuarios/login");
+    res.status(401).send({
+      mensaje: "Las credenciales no son correctas",
+    });
   }
 };
 
