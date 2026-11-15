@@ -1,12 +1,27 @@
 const listaCarrito = document.getElementById("lista__carrito");
 const totalCarrito = document.getElementById("carrito-total");
+const btnFinalizar = document.getElementById("btn-finalizar");
+
+const modalEliminarElemento = document.getElementById("modalEliminar");
+const mensajeModalEliminar = document.getElementById("mensajeModalEliminar");
+const btnConfirmarEliminar = document.getElementById("btnConfirmarEliminar");
+
+const modalEliminar = new bootstrap.Modal(modalEliminarElemento);
 
 window.addEventListener("load", () => {
   mostrarCarrito();
 });
 
+btnFinalizar.addEventListener("click", (evento) => {
+  if (obtenerCarrito().length === 0) {
+    evento.preventDefault();
+  }
+});
+
 function mostrarCarrito() {
   const carrito = obtenerCarrito();
+
+  btnFinalizar.classList.toggle("btn-deshabilitado", carrito.length === 0);
 
   listaCarrito.replaceChildren();
 
@@ -61,7 +76,16 @@ function mostrarCarrito() {
     });
 
     botonEliminar.addEventListener("click", () => {
-      eliminarProductoCarrito(producto);
+      mensajeModalEliminar.textContent = `¿Está seguro de querer eliminar
+       ${producto.marca} ${producto.modelo} del carrito?`;
+
+      modalEliminar.show();
+
+      btnConfirmarEliminar.onclick = () => {
+        eliminarProductoCarrito(producto);
+
+        modalEliminar.hide();
+      };
     });
 
     controles.append(botonQuitar, cantidad, botonAgregar, botonEliminar);

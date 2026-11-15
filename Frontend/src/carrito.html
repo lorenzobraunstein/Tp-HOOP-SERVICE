@@ -87,6 +87,53 @@
       </section>
     </main>
 
+    <div
+      class="modal fade"
+      id="modalEliminar"
+      tabindex="-1"
+      aria-labelledby="tituloModalEliminar"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2 class="modal-title fs-5" id="tituloModalEliminar">
+              Eliminar producto
+            </h2>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Cerrar"
+            ></button>
+          </div>
+
+          <div class="modal-body">
+            <p id="mensajeModalEliminar" class="mb-0">
+              ¿Está seguro de querer eliminar este producto del carrito?
+            </p>
+          </div>
+
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Cancelar
+            </button>
+
+            <button
+              type="button"
+              class="btn btn-primary"
+              id="btnConfirmarEliminar"
+            >
+              Eliminar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
     <footer class="bg-body-tertiary text-center py-3 border-top">
       <small class="text-body-secondary">
         Alumnos: Lorenzo Braunstein &amp; Adrián López Da Silva
