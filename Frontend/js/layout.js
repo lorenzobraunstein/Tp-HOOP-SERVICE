@@ -55,13 +55,6 @@ if (saludoEl) {
   saludoEl.textContent = `¡Hola, ${nombreCliente}!`;
 }
 
-// ----- CARRITO -----
-// El carrito es un array guardado en localStorage. Cada item es
-// el producto que vino del backend más la cantidad elegida.
-// localStorage guarda solo texto, por eso entra con stringify
-// y sale con parse. Estas dos funciones viven acá para que las
-// puedan usar productos.js, carrito.js y ticket.js.
-
 function obtenerCarrito() {
   const carritoString = localStorage.getItem("carrito");
 

@@ -1,12 +1,13 @@
 const papelTicket = document.querySelector(".ticket__papel");
 const botonPDF = document.getElementById("btn-pdf");
+const { jsPDF } = window.jspdf;
 
 window.addEventListener("load", () => {
   mostrarTicket();
 });
 
 botonPDF.addEventListener("click", () => {
-  window.print();
+  descargarPDF();
 });
 
 function mostrarTicket() {
@@ -60,4 +61,21 @@ function mostrarTicket() {
   total.textContent = `Total: $${calcularTotal(carrito)}`;
 
   papelTicket.append(encabezado, datos, detalle, total);
+
+  return papelTicket;
+}
+
+function descargarPDF() {
+  const ticket = mostrarTicket();
+  const doc = new jsPDF();
+
+  doc.html(ticket, {
+    x: 0,
+    y: 0,
+    width: 210,
+    windowWidth: ticket.offsetWidth,
+    callback: function (doc) {
+      doc.save("ticket.pdf");
+    },
+  });
 }
