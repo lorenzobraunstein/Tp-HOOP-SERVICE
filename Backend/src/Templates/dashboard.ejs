@@ -16,7 +16,8 @@
 
   <main class="container py-4">
     <h1 class="h3 mb-4">Panel de administración</h1>
-
+    <a href="/productos/alta" class="btn btn-primary mb-4">
+      Agregar producto</a>
     <% const categorias = [ { nombre: "Zapatillas", productos: zapatillas }, 
     { nombre: "Camisetas", productos: camisetas }]; %>
 
@@ -65,6 +66,9 @@
               </td>
 
               <td>
+                <a href="/productos/<%= producto.id %>/modificar" class="btn btn-primary btn-sm">
+                    Modificar</a>
+                    
                 <% if (producto.activo) { %>
                 <button type="button" class="btn btn-primary btn-sm btn-eliminar" id="<%= producto.id %>">
                   Eliminar
@@ -74,6 +78,7 @@
                   Activar
                 </button>
                 <% } %>
+                
               </td>
             </tr>
             <% } %>
@@ -82,10 +87,6 @@
       </div>
     </section>
     <% } %>
-    </tbody>
-    </table>
-    </div>
-    </section>
   </main>
 
   <div class="modal fade" id="modalConfirmacion" tabindex="-1" aria-labelledby="tituloModal" aria-hidden="true">

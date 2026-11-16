@@ -10,6 +10,8 @@ const {
   modificarProductoPorId,
   desactivarProductoPorId,
   activarProductoPorId,
+  traerAltaProducto,
+  traerModificarProducto,
 } = require("./producto.controller");
 
 const productoRouter = express.Router();
@@ -23,6 +25,10 @@ productoRouter.post(
 );
 
 productoRouter.get("/dashboard", traerDashboard);
+
+productoRouter.get("/alta", traerAltaProducto);
+
+productoRouter.get("/:id/modificar", traerModificarProducto);
 
 productoRouter.get("/:id", traerProductoPorId);
 

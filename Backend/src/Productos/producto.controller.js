@@ -76,6 +76,24 @@ const activarProductoPorId = async (req, res) => {
   res.status(200).send({ mensaje: "Alta de producto realizada exitosamente" });
 };
 
+const traerAltaProducto = (req, res) => {
+  res.render("alta");
+};
+
+const traerModificarProducto = async (req, res) => {
+  const { id } = req.params;
+
+  const producto = await Producto.findByPk(id);
+
+  if (!producto) {
+    return res.status(404).send({
+      mensaje: "No existe un producto con este ID",
+    });
+  }
+
+  res.render("modificar", { producto });
+};
+
 module.exports = {
   crearProducto,
   traerProductoPorId,
@@ -84,4 +102,6 @@ module.exports = {
   modificarProductoPorId,
   desactivarProductoPorId,
   activarProductoPorId,
+  traerAltaProducto,
+  traerModificarProducto,
 };
