@@ -6,17 +6,51 @@ const modalEliminarElemento = document.getElementById("modalEliminar");
 const mensajeModalEliminar = document.getElementById("mensajeModalEliminar");
 const btnConfirmarEliminar = document.getElementById("btnConfirmarEliminar");
 
+const modalConfirmarElemento = document.getElementById("modalConfirmar");
+const btnConfirmarCompra = document.getElementById("btnConfirmarCompra");
+
 const modalEliminar = new bootstrap.Modal(modalEliminarElemento);
+const modalConfirmar = new bootstrap.Modal(modalConfirmarElemento);
 
 window.addEventListener("load", () => {
   mostrarCarrito();
 });
 
-btnFinalizar.addEventListener("click", (evento) => {
+btnFinalizar.addEventListener("click", () => {
   if (obtenerCarrito().length === 0) {
-    evento.preventDefault();
+    return;
   }
+
+  modalConfirmar.show();
 });
+
+btnConfirmarCompra.addEventListener("click", () => {
+  finalizarCompra();
+});
+
+async function finalizarCompra() {
+  const carrito = obtenerCarrito();
+
+  const venta = {
+    nombreCliente: sessionStorage.getItem("nombreCliente"),
+    precioTotal: calcularTotal(carrito),
+    productos: carrito,
+  };
+
+  const peticion = await fetch("http://localhost:3000/ventas", {
+    method: "POST",
+    body: JSON.stringify(venta),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  if (peticion.ok) {
+    modalConfirmar.hide();
+
+    window.location.href = "./ticket.html";
+  }
+}
 
 function mostrarCarrito() {
   const carrito = obtenerCarrito();
