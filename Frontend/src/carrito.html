@@ -50,9 +50,6 @@
               <a class="nav-link" href="./carrito.html">Carrito</a>
             </li>
           </ul>
-
-          <!-- ms-auto lo manda a la derecha. Hace falta porque el
-               <ul> está absoluto y ya no lo empuja. -->
           <button
             id="btn-tema"
             type="button"
@@ -80,9 +77,13 @@
           <a href="./productos.html" class="btn btn-outline-primary">
             Seguir comprando
           </a>
-          <a href="./ticket.html" id="btn-finalizar" class="btn btn-primary">
+
+          <!-- Antes era un <a> que iba derecho al ticket. Ahora es un
+               botón porque primero hay que guardar la venta: al ticket
+               lo manda carrito.js, y solo si el backend respondió ok. -->
+          <button id="btn-finalizar" type="button" class="btn btn-primary">
             Finalizar compra
-          </a>
+          </button>
         </aside>
       </section>
     </main>
@@ -134,6 +135,57 @@
         </div>
       </div>
     </div>
+
+    <!-- Modal de confirmación de la compra. Mismo armado que el de
+         eliminar: el botón Cancelar lo cierra solo con el
+         data-bs-dismiss, y el de confirmar lo escucha carrito.js
+         para recién ahí guardar la venta. -->
+    <div
+      class="modal fade"
+      id="modalConfirmar"
+      tabindex="-1"
+      aria-labelledby="tituloModalConfirmar"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2 class="modal-title fs-5" id="tituloModalConfirmar">
+              Confirmar compra
+            </h2>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Cerrar"
+            ></button>
+          </div>
+
+          <div class="modal-body">
+            <p class="mb-0">¿Está seguro de querer finalizar la compra?</p>
+          </div>
+
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Cancelar
+            </button>
+
+            <button
+              type="button"
+              class="btn btn-primary"
+              id="btnConfirmarCompra"
+            >
+              Confirmar compra
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <footer class="bg-body-tertiary text-center py-3 border-top">
       <small class="text-body-secondary">
         Alumnos: Lorenzo Braunstein &amp; Adrián López Da Silva
