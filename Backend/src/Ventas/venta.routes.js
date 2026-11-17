@@ -1,8 +1,11 @@
 const express = require("express");
-const { crearVenta } = require("./venta.controller");
+const { validarDatosVenta } = require("./venta.middleware");
+const { crearVenta, traerVentas } = require("./venta.controller");
 
 const ventaRouter = express.Router();
 
-ventaRouter.post("/", crearVenta);
+ventaRouter.post("/",validarDatosVenta, crearVenta);
+
+ventaRouter.get("/", traerVentas);
 
 module.exports = ventaRouter;

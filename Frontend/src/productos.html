@@ -76,7 +76,29 @@
 
         <div class="productos__lista" id="lista-productos"></div>
 
-        <nav class="productos__paginacion" id="paginacion"></nav>
+        <!-- Los botones son fijos: productos.js solo los prende o
+             apaga y escribe en qué página estamos. -->
+        <nav class="productos__paginacion" id="paginacion">
+          <div class="d-flex align-items-center gap-2">
+            <button
+              id="btn-anterior"
+              type="button"
+              class="btn btn-outline-primary"
+            >
+              Anterior
+            </button>
+
+            <span id="indicador-pagina" class="fw-bold"></span>
+
+            <button
+              id="btn-siguiente"
+              type="button"
+              class="btn btn-outline-primary"
+            >
+              Siguiente
+            </button>
+          </div>
+        </nav>
       </section>
     </main>
 
