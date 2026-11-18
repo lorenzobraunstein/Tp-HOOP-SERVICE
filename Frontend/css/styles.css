@@ -27,6 +27,10 @@
   --bs-btn-border-color: #bd0038;
   --bs-btn-hover-bg: #bd0038;
   --bs-btn-hover-border-color: #bd0038;
+  --bs-btn-active-bg: #94002c;
+  --bs-btn-active-border-color: #94002c;
+  --bs-btn-disabled-color: #bd0038;
+  --bs-btn-disabled-border-color: #bd0038;
 }
 
 .btn-outline-dark {

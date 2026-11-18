@@ -24,6 +24,6 @@ const Venta = sequelize.define(
   },
 );
 
-Venta.sync({ alter: true });
+	Venta.sync();
 
 module.exports = Venta;

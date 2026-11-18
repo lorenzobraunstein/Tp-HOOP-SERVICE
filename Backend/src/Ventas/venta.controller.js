@@ -1,4 +1,4 @@
-const { Venta, VentasProductos } = require("../Database/relaciones");
+const { Venta, Producto, VentasProductos } = require("../Database/relaciones");
 
 const crearVenta = async (req, res) => {
   const { nombreCliente, precioTotal, productos } = req.body;
@@ -19,4 +19,10 @@ const crearVenta = async (req, res) => {
   res.status(201).send(ventaCreada);
 };
 
-module.exports = { crearVenta };
+const traerVentas = async (req, res) => {
+  const ventas = await Venta.findAll({ include: Producto });
+
+  res.send(ventas);
+};
+
+module.exports = { crearVenta, traerVentas };

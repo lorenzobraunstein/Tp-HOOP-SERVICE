@@ -1,10 +1,3 @@
-// ============================================================
-// productos.js
-// Trae los productos del backend, los dibuja como cards y
-// permite sumar o restar cantidades del carrito.
-// Usa obtenerCarrito y guardarCarrito, que vienen de layout.js.
-// ============================================================
-
 const listaProductos = document.getElementById("lista-productos");
 const contenedorCategorias = document.querySelector(".productos__categorias");
 
@@ -12,41 +5,81 @@ const btnMostrarTodo = document.getElementById("btnTodo");
 const btnMostrarZapatillas = document.getElementById("btnZapatillas");
 const btnMostrarCamisetas = document.getElementById("btnCamisetas");
 
-let productos = [];
+const btnAnterior = document.getElementById("btn-anterior");
+const btnSiguiente = document.getElementById("btn-siguiente");
+const indicadorPagina = document.getElementById("indicador-pagina");
+
+let paginaActual = 1;
+let tipoActual = "";
+
+const limite = 6;
 
 window.addEventListener("load", () => {
   traerProductos();
 });
 
 btnMostrarTodo.addEventListener("click", () => {
-  mostrarProductos(productos);
+  cambiarTipo("");
   mostrarFiltroActivo(btnMostrarTodo);
 });
 
 btnMostrarZapatillas.addEventListener("click", () => {
-  filtrarProductosPorTipo("zapatillas");
+  cambiarTipo("zapatillas");
   mostrarFiltroActivo(btnMostrarZapatillas);
 });
 
 btnMostrarCamisetas.addEventListener("click", () => {
-  filtrarProductosPorTipo("camisetas");
+  cambiarTipo("camisetas");
   mostrarFiltroActivo(btnMostrarCamisetas);
 });
 
+btnAnterior.addEventListener("click", () => {
+  paginaActual = paginaActual - 1;
+
+  traerProductos();
+});
+
+btnSiguiente.addEventListener("click", () => {
+  paginaActual = paginaActual + 1;
+
+  traerProductos();
+});
+
+function cambiarTipo(tipo) {
+  tipoActual = tipo;
+  paginaActual = 1;
+
+  traerProductos();
+}
+
 const traerProductos = async () => {
-  const peticion = await fetch("http://localhost:3000/productos");
+  const peticion = await fetch(
+    `http://localhost:3000/productos?page=${paginaActual}&limit=${limite}&tipo=${tipoActual}`,
+  );
 
   const datos = await peticion.json();
 
-  if (peticion.ok) {
-    productos = datos.filter((producto) => producto.activo === true);
-    mostrarProductos(productos);
+  if (!peticion.ok) {
+    return;
   }
+
+  if (datos.length === 0 && paginaActual > 1) {
+    paginaActual = paginaActual - 1;
+
+    traerProductos();
+    return;
+  }
+
+  mostrarProductos(datos);
+  mostrarPaginacion(datos);
 };
 
-// Suma o resta cantidad de un producto. Si todavía no estaba en
-// el carrito lo agrega, y al final descarta los que quedaron en
-// cero, que es la forma de "quitar" un producto.
+function mostrarPaginacion(productosDeLaPagina) {
+  indicadorPagina.textContent = `Página ${paginaActual}`;
+
+  btnAnterior.disabled = paginaActual === 1;
+  btnSiguiente.disabled = productosDeLaPagina.length < limite;
+}
 
 function modificarCantidadCarrito(producto, cambio, div) {
   const carrito = obtenerCarrito();
@@ -69,9 +102,6 @@ function modificarCantidadCarrito(producto, cambio, div) {
 
   mostrarBotonesCantidad(producto, div);
 }
-
-// Dibuja los botones de la card: si el producto no está en el
-// carrito muestra "Agregar", y si ya está muestra - cantidad +.
 
 function mostrarBotonesCantidad(producto, div) {
   const carrito = obtenerCarrito();
@@ -155,17 +185,6 @@ function mostrarProductos(productosAMostrar) {
     mostrarBotonesCantidad(producto, acciones);
   });
 }
-
-function filtrarProductosPorTipo(tipo) {
-  const productosFiltrado = productos.filter((producto) => {
-    return producto.tipo === tipo;
-  });
-
-  mostrarProductos(productosFiltrado);
-}
-
-// Busca los botones DENTRO de .productos__categorias. Si usara
-// querySelectorAll(".btn") agarraría también los de la navbar.
 
 function mostrarFiltroActivo(boton) {
   const botones = contenedorCategorias.querySelectorAll(".btn");
