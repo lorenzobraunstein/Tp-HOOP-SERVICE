@@ -1,20 +1,6 @@
-// ============================================================
-// layout.js
-// Se carga en todas las páginas del cliente. Tiene lo que
-// comparten: el tema, el nombre del cliente y el carrito.
-// Va SIEMPRE antes que los otros scripts en el HTML, porque
-// productos.js, carrito.js y ticket.js usan sus funciones.
-// ============================================================
-
 const btnTema = document.getElementById("btn-tema");
 const saludoEl = document.getElementById("saludo");
 const pagina = document.body.dataset.page;
-
-// ----- TEMA CLARO / OSCURO -----
-// Bootstrap 5.3 elige todos sus colores leyendo el atributo
-// data-bs-theme del <html>. Cambiándolo de "light" a "dark" se
-// repinta la página entera sin tocar una sola clase nuestra.
-// Lo guardamos en localStorage para que sobreviva a la recarga.
 
 function aplicarTema(tema) {
   document.documentElement.setAttribute("data-bs-theme", tema);
@@ -33,12 +19,6 @@ if (btnTema) {
     aplicarTema(temaActual === "dark" ? "light" : "dark");
   });
 }
-
-// ----- NOMBRE DEL CLIENTE -----
-// Esto es un autoservicio: llegar al index significa cliente
-// nuevo, así que ahí limpiamos nombre y carrito. Y si alguien
-// entra a otra pantalla sin haber pasado por el index, lo
-// mandamos de vuelta (si no, el saludo dice "Hola, null").
 
 if (pagina === "index") {
   sessionStorage.removeItem("nombreCliente");
